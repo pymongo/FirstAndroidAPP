@@ -31,6 +31,6 @@
     android:layout_marginStart="16dp"
     android:layout_marginLeft="16dp"
     android:text="Button"
-    app:layout_constraintStart_toEndOf="@+id/editText"
-    tools:layout_editor_absoluteY="16dp" />
+    app:layout_constraintBaseline_toBaselineOf="@+id/editText"
+    app:layout_constraintStart_toEndOf="@+id/editText" />
 </androidx.constraintlayout.widget.ConstraintLayout>
