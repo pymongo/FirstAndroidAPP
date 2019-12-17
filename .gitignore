@@ -15,7 +15,3 @@ gradlew.bat
 
 .idea
 .vscode
-
-# Ignore vim temporary files
-**/*.swp
-**/*.swo
