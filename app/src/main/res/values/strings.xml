@@ -1,3 +1,7 @@
 <resources>
   <string name="app_name">My First App</string>
+  <string name="squareInputHint">请输入数字</string>
+  <string name="squareCalcText">计算平方</string>
+  <string name="squareLabelText">平方计算结果</string>
+  <string name="toastButtonText">toastButton</string>
 </resources>

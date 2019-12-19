@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     Button squareCalc = findViewById(R.id.squareCalc);
     squareCalc.setOnClickListener(new View.OnClickListener() {
       @Override
-      public void onClick(View view) {
+      public void onClick(View v) {
         int input = Integer.parseInt(squareInput.getText().toString());
         squareOutput.setText(String.valueOf(input * input));
       }
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     Button toastButton = findViewById(R.id.toastButton);
     toastButton.setOnClickListener(new View.OnClickListener() {
       @Override
-      public void onClick(View view) {
+      public void onClick(View v) {
         Context context = getApplicationContext();
         CharSequence text = "[Toast]:网络请求失败！请检查您的网络";
         Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);

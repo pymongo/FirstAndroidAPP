@@ -17,7 +17,7 @@
     android:layout_marginEnd="16dp"
     android:layout_marginRight="16dp"
     android:ems="10"
-    android:hint="请输入数字"
+    android:hint="@string/squareInputHint"
     android:inputType="textPersonName"
     app:layout_constraintEnd_toStartOf="@+id/squareCalc"
     app:layout_constraintHorizontal_bias="0.0"
@@ -30,17 +30,16 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
     android:layout_marginLeft="16dp"
-    android:text="计算平方"
+    android:text="@string/squareCalcText"
     app:layout_constraintBaseline_toBaselineOf="@+id/squareInput"
     app:layout_constraintStart_toEndOf="@+id/squareInput" />
-
 
   <TextView
     android:id="@+id/squareLabel"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="32dp"
-    android:text="平方计算结果："
+    android:layout_marginTop="28dp"
+    android:text="@string/squareLabelText"
     android:textSize="30sp"
     app:layout_constraintTop_toBottomOf="@+id/squareInput"
     tools:layout_editor_absoluteX="16dp" />
@@ -60,7 +59,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="32dp"
-    android:text="toastButton"
+    android:text="@string/toastButtonText"
     android:textAllCaps="false"
     app:layout_constraintTop_toBottomOf="@+id/squareLabel"
     tools:layout_editor_absoluteX="16dp" />
