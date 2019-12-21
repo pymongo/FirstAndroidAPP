@@ -10,6 +10,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+// FIXME toast在进入某些事件如onResume由于页面未初始化会不显示
+// 观察Activity生命周期要看log
+/* 几个常见的应用切换情景
+ * 1. 回到桌面：onPause->onStop
+ * 2. 【Recent Apps key】：onPause->onStop
+ * 3. 回到APP：onRestart->onStartResume
+ * 4. 在Recent Apps中划掉应用：onDestroy
+ * */
 public class MainActivity extends AppCompatActivity {
 
   public static final String TAG = "Toast";
@@ -57,18 +65,30 @@ public class MainActivity extends AppCompatActivity {
   @Override
   protected void onResume() {
     super.onResume();
-    Log.d(TAG, "onResume: ");
+    Log.d(TAG, "onResume");
   }
 
   @Override
   protected void onPause() {
     super.onPause();
-    Log.d(TAG, "onPause: ");
+    Log.d(TAG, "onPause");
   }
 
   @Override
   protected void onStop() {
     super.onStop();
-    Log.d(TAG, "onStop: ");
+    Log.d(TAG, "onStop");
+  }
+
+  @Override
+  protected void onRestart() {
+    super.onRestart();
+    Log.d(TAG, "onRestart");
+  }
+
+  @Override
+  protected void onDestroy() {
+    super.onDestroy();
+    Log.d(TAG, "onDestroy");
   }
 }
