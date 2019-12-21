@@ -1,5 +1,6 @@
 package com.example.myfirstapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,14 +14,16 @@ import androidx.appcompat.app.AppCompatActivity;
 // FIXME toast在进入某些事件如onResume由于页面未初始化会不显示
 // 观察Activity生命周期要看log
 /* 几个常见的应用切换情景
- * 1. 回到桌面：onPause->onStop
- * 2. 【Recent Apps key】：onPause->onStop
+ * 1. 回到桌面：Pause->Stop
+ * 2. 【Recent Apps key】：Pause->Stop
  * 3. 回到APP：onRestart->onStartResume
  * 4. 在Recent Apps中划掉应用：onDestroy
+ * 5. Activity1切换到2：Pause1->Create2->Start2->Resume2->Stop2
+ * 6. Activity2切回1：Pause2->restart1->start1-resume1-stop2-destroy2
  * */
 public class MainActivity extends AppCompatActivity {
 
-  public static final String TAG = "Toast";
+  public static final String TAG = "ActivityLifecycle1";
 
   // 封装Toast消息方法
   public void sendToast(CharSequence Message) {
@@ -34,6 +37,17 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
     sendToast("onCreate");
 
+    // secondActivity部分
+    Button secondActivity = findViewById(R.id.secondActivity);
+    secondActivity.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent startIntent = new Intent(getApplicationContext(), SecondActivity.class);
+        startActivity(startIntent);
+      }
+    });
+
+    // 平方计算部分
     final EditText squareInput = findViewById(R.id.squareInput);
     final TextView squareOutput = findViewById(R.id.squareOutput);
     Button squareCalc = findViewById(R.id.squareCalc);
@@ -47,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
+    // ToastButton部分
     Button toastButton = findViewById(R.id.toastButton);
     toastButton.setOnClickListener(new View.OnClickListener() {
       @Override
