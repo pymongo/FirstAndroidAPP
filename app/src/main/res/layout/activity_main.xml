@@ -1,80 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:layout_margin="16dp"
-  tools:context=".MainActivity">
+  android:orientation="vertical">
 
-  <EditText
-    android:id="@+id/squareInput"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginLeft="16dp"
-    android:ems="10"
-    android:hint="@string/squareInputHint"
-    android:inputType="textPersonName"
-    app:layout_constraintStart_toStartOf="parent"
-    tools:layout_editor_absoluteY="16dp" />
+  <ListView
+    android:id="@+id/list_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
 
-  <Button
-    android:id="@+id/squareCalc"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/squareCalcText"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.371"
-    app:layout_constraintStart_toEndOf="@+id/squareInput"
-    tools:layout_editor_absoluteY="16dp" />
-
-  <TextView
-    android:id="@+id/squareLabel"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginLeft="16dp"
-    android:text="@string/squareLabelText"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.152" />
-
-  <TextView
-    android:id="@+id/squareOutput"
-    android:layout_width="120dp"
-    android:layout_height="40dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.613"
-    app:layout_constraintStart_toEndOf="@+id/squareLabel"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.142" />
-
-  <Button
-    android:id="@+id/toastButton"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/toastButtonText"
-    android:textAllCaps="false"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.466"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/secondActivity"
-    app:layout_constraintVertical_bias="0.302" />
-
-  <Button
-    android:id="@+id/secondActivity"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="292dp"
-    android:text="@string/secondActivityButton"
-    android:textAllCaps="false"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.466"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -1,13 +1,10 @@
 package com.example.myfirstapp;
 
-import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,87 +20,32 @@ import androidx.appcompat.app.AppCompatActivity;
  * */
 public class MainActivity extends AppCompatActivity {
 
-  public static final String TAG = "ActivityLifecycle1";
-
-  // 封装Toast消息方法
-  public void sendToast(CharSequence Message) {
-    Log.d(TAG, ""+Message);
-    Toast.makeText(getApplicationContext(), Message, Toast.LENGTH_SHORT).show();
-  }
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    sendToast("onCreate");
 
-    // secondActivity部分
-    Button secondActivity = findViewById(R.id.secondActivity);
-    secondActivity.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent startIntent = new Intent(getApplicationContext(), SecondActivity.class);
-        startActivity(startIntent);
-      }
-    });
-
-    // 平方计算部分
-    final EditText squareInput = findViewById(R.id.squareInput);
-    final TextView squareOutput = findViewById(R.id.squareOutput);
-    Button squareCalc = findViewById(R.id.squareCalc);
-    squareCalc.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        int input = Integer.parseInt(squareInput.getText().toString());
-        String output = String.valueOf(input * input);
-        squareOutput.setText(output);
-        sendToast(output);
-      }
-    });
-
-    // ToastButton部分
-    Button toastButton = findViewById(R.id.toastButton);
-    toastButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        sendToast("网络请求失败！");
-      }
-    });
+    ListView listView = findViewById(R.id.list_view);
+    ItemAdapter adapter = new ItemAdapter(this);
+    listView.setAdapter(adapter);
+    String versionName = "";
+    String versionCode = "";
+    try {
+      PackageInfo packageInfo = getApplicationContext().getPackageManager().getPackageInfo(getPackageName(), 0);
+      versionName = packageInfo.versionName;
+      versionCode = packageInfo.versionCode+"";
+    } catch (PackageManager.NameNotFoundException e) {
+      e.printStackTrace();
+    }
+    adapter.addItem("android.os.Build.DEVICE", android.os.Build.DEVICE);
+    adapter.addItem("android.os.Build.MODEL", android.os.Build.MODEL);
+    adapter.addItem("android.os.Build.PRODUCT", android.os.Build.PRODUCT);
+    adapter.addItem("android.os.Build.VERSION.SDK", android.os.Build.VERSION.SDK);
+    adapter.addItem("Build.VERSION.RELEASE", Build.VERSION.RELEASE);
+    adapter.addItem("Build.VERSION.CODENAME", Build.VERSION.CODENAME);
+    adapter.addItem("Build.VERSION.INCREMENTAL", Build.VERSION.INCREMENTAL);
+    adapter.addItem("versionName", versionName);
+    adapter.addItem("versionCode", versionCode);
   }
 
-  @Override
-  protected void onStart() {
-    super.onStart();
-    sendToast("onStart");
-  }
-
-  @Override
-  protected void onResume() {
-    super.onResume();
-    Log.d(TAG, "onResume");
-  }
-
-  @Override
-  protected void onPause() {
-    super.onPause();
-    Log.d(TAG, "onPause");
-  }
-
-  @Override
-  protected void onStop() {
-    super.onStop();
-    Log.d(TAG, "onStop");
-  }
-
-  @Override
-  protected void onRestart() {
-    super.onRestart();
-    Log.d(TAG, "onRestart");
-  }
-
-  @Override
-  protected void onDestroy() {
-    super.onDestroy();
-    Log.d(TAG, "onDestroy");
-  }
 }
